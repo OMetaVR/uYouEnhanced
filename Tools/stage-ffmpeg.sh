@@ -60,7 +60,7 @@ if [ -z "$BUNDLE" ]; then
   # Usually Bundles/uYouMedia.bundle is embedded by the tweak's install rule
   # before after-stage runs. If it is not there yet, create it where an embedded
   # bundle would land so the runtime resolver still finds it.
-  for candidate in "$STAGING/var/jb/Library/Frameworks" "$STAGING/Library/Frameworks"; do
+  for candidate in "$STAGING/Library/Application Support"; do
     if mkdir -p "$candidate/$BUNDLE_NAME" 2>/dev/null; then
       BUNDLE="$candidate/$BUNDLE_NAME"
       warn "$BUNDLE_NAME was not staged yet - created $candidate/$BUNDLE_NAME"
