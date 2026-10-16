@@ -1,0 +1,30 @@
+# OMetaVR pipeline: https://github.com/OMetaVR/ipa-pipeline
+name: OMetaVR Build
+run-name: Build ${{ inputs.upstream_tag }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      upstream_tag:
+        description: "Upstream release tag to build"
+        required: true
+        type: string
+      base_version:
+        description: "Base app version to inject into (from the base-ipas draft); blank if none"
+        required: false
+        default: ""
+        type: string
+
+concurrency:
+  group: ometa-build-${{ inputs.upstream_tag }}
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    uses: OMetaVR/ipa-pipeline/.github/workflows/build.yml@main
+    with:
+      upstream_tag: ${{ inputs.upstream_tag }}
+      base_version: ${{ inputs.base_version }}
+      runner: macos-latest

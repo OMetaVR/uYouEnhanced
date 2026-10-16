@@ -1,0 +1,14 @@
+{
+  "upstream": "arichornlover/uYouEnhanced",
+  "name": "uYouEnhanced",
+  "base": {
+    "name": "YouTube",
+    "bundleId": "com.google.ios.youtube",
+    "appStoreId": 544007664,
+    "version": { "from": "upstream-file", "file": "Makefile", "regex": "(?m)^YOUTUBE_VERSION = (\\S+)" }
+  },
+  "cache": {
+    "paths": ["modules/ffmpeg"],
+    "key": "echo ffmpegkit-$(shasum Tools/fetch-ffmpegkit.sh | cut -c1-12)"
+  }
+}

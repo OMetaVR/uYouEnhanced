@@ -1,0 +1,16 @@
+# OMetaVR pipeline: https://github.com/OMetaVR/ipa-pipeline
+name: OMetaVR Watch
+
+on:
+  schedule:
+    - cron: "15 */3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+  actions: write
+
+jobs:
+  watch:
+    uses: OMetaVR/ipa-pipeline/.github/workflows/watch.yml@main
